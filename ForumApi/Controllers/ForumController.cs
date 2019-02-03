@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ForumApi.Models;
-using ForumApi.Models.Sensitive;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumApi.Controllers
@@ -19,9 +18,9 @@ namespace ForumApi.Controllers
             return new Forum[] {new Forum()
             {
                 Title = "My First Forum",
-                Author = new UserBase()
+                Author = new SimpleUser()
                 {
-                    name = "Locke lamora"
+                    Name = "Locke lamora"
                 }
             }};
         }
