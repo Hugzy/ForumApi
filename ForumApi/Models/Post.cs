@@ -1,10 +1,11 @@
 using System;
-using System.Net.Mime;
+using System.ComponentModel.DataAnnotations;
 
 namespace ForumApi.Models
 {
     public class Post
     {
+        [Key]
         public Guid Id { get; set; }
         public SimpleUser author { get; set; }
         public Thread thread { get; set; }

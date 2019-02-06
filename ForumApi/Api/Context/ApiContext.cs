@@ -13,5 +13,7 @@ namespace ForumApi.Api.Context
         public DbSet<SimpleUser> Users { get; set; }
  
         public DbSet<Post> Posts { get; set; }
+        
+        public DbSet<Content> Contents { get; set; }
     }
 }

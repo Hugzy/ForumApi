@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ForumApi.Api.Context;
+using ForumApi.Providers.test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,8 @@ namespace ForumApi
                 app.UseHsts();
             }
 
+            TestProvider.getInstance().AddTestData(app.ApplicationServices.GetService<ApiContext>());
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }
