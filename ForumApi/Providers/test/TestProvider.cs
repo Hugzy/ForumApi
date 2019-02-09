@@ -25,6 +25,7 @@ namespace ForumApi.Providers.test
                 Title = "a post",
                 author = new SimpleUser()
                 {
+                    Id = Guid.NewGuid(),
                     Name = "A User"
                 },
                 Content = new Content()
@@ -38,6 +39,26 @@ namespace ForumApi.Providers.test
 
             context.Posts.Add(post1);
 
+            var post2 = new Post
+            {
+                Title = "b post",
+                author = new SimpleUser()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Yet another author"
+                },
+                Content = new Content()
+                {
+                    Id = Guid.NewGuid(),
+                    Characters = 1234,
+                    Text = "the quick brown fox..."
+                },
+                Id = Guid.NewGuid(),
+                thread = new Thread()
+            };
+            
+            context.Posts.Add(post2);
+            
             context.SaveChanges();
         }
         
