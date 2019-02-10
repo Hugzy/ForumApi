@@ -1,7 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using ForumApi.Models;
 
-namespace ForumApi.Models
+namespace ForumApi.Post.Models
 {
     public class Post
     {

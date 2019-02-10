@@ -18,9 +18,28 @@ namespace ForumApi.Providers.test
             return _instance;
         }
 
-        public void AddTestData(ApiContext context)
+        public void AddTestForums(ApiContext context)
         {
-            var post1 = new Post
+            var forum1 = new Forum.Models.Forum()
+            {
+                Id = Guid.NewGuid(),
+                Title = "A title of a forum",
+                Author = new SimpleUser()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Some forum author"
+                }
+            };
+
+            context.Forums.Add(forum1);
+
+            context.SaveChanges();
+
+        }
+        
+        public void AddTestPosts(ApiContext context)
+        {
+            var post1 = new Post.Models.Post
             {
                 Title = "a post",
                 author = new SimpleUser()
@@ -39,7 +58,7 @@ namespace ForumApi.Providers.test
 
             context.Posts.Add(post1);
 
-            var post2 = new Post
+            var post2 = new Post.Models.Post
             {
                 Title = "b post",
                 author = new SimpleUser()

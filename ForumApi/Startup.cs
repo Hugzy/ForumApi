@@ -44,7 +44,11 @@ namespace ForumApi
                 app.UseHsts();
             }
 
-            TestProvider.getInstance().AddTestData(app.ApplicationServices.GetService<ApiContext>());
+            //Add test data for posts in the in-memory database
+            TestProvider.getInstance().AddTestPosts(app.ApplicationServices.GetService<ApiContext>());
+            
+            //Add test data for forums in the in-memory database
+            TestProvider.getInstance().AddTestForums(app.ApplicationServices.GetService<ApiContext>());
             
             app.UseHttpsRedirection();
             app.UseMvc();

@@ -5,8 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="posts\Repositories" />
-        <Folder Include="posts\Services" />
         <Folder Include="wwwroot\" />
     </ItemGroup>
 

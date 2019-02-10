@@ -7,7 +7,7 @@ namespace ForumApi.Models
     {
         [Key]
         public Guid id { get; set; }
-        public Forum Forum { get; set; }
+        public Forum.Models.Forum Forum { get; set; }
         public SimpleUser author { get; set; }
         public string Title { get; set; }
     }

@@ -1,28 +1,37 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ForumApi.Api.Context;
 using ForumApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace ForumApi.Controllers
+namespace ForumApi.Forum.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ForumController : ControllerBase
     {
+        private readonly ApiContext _context;
+
+        public ForumController(ApiContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Forum>> Get()
+        public async Task<ActionResult<IEnumerable<Models.Forum>>> Get()
         {
-            return new Forum[] {new Forum()
+            var forums = await _context.Forums.ToArrayAsync();
+            var response = forums.Select(forum => new
             {
-                Title = "My First Forum",
-                Author = new SimpleUser()
-                {
-                    Name = "Locke lamora"
-                }
-            }};
+                forum.Id,
+                forum.Title,
+                forum.Author
+            });
+            return Ok(response);
         }
 
         // GET api/values/5
