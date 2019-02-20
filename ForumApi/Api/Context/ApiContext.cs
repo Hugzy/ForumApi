@@ -1,4 +1,4 @@
-using ForumApi.Models;
+using ForumApi.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForumApi.Api.Context
@@ -17,5 +17,7 @@ namespace ForumApi.Api.Context
         public DbSet<Content> Contents { get; set; }
         
         public DbSet<Forum.Models.Forum> Forums { get; set; }
+
+        public DbSet<Thread.Models.Thread> Threads { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using ForumApi.Models;
+using ForumApi.Core.Models;
 
 namespace ForumApi.Forum.Models
 {

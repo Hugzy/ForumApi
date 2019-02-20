@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ForumApi.Models
+namespace ForumApi.Core.Models
 {
     public class SimpleUser
     {

@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using ForumApi.Models;
+using ForumApi.Core.Models;
 
 namespace ForumApi.Post.Models
 {
@@ -8,8 +8,8 @@ namespace ForumApi.Post.Models
     {
         [Key]
         public Guid Id { get; set; }
-        public SimpleUser author { get; set; }
-        public Thread thread { get; set; }
+        public SimpleUser Author { get; set; }
+        public Thread.Models.Thread Thread { get; set; }
         public string Title { get; set; }
         public Content Content { get; set; }
     }

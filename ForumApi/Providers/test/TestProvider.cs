@@ -1,6 +1,7 @@
 using System;
 using ForumApi.Api.Context;
-using ForumApi.Models;
+using ForumApi.Core.Models;
+
 
 namespace ForumApi.Providers.test
 {
@@ -18,7 +19,27 @@ namespace ForumApi.Providers.test
             return _instance;
         }
 
-        public void AddTestForums(ApiContext context)
+        public TestProvider AddTestThreads(ApiContext context)
+        {
+            var thread1 = new Thread.Models.Thread()
+            {
+                Author = new SimpleUser()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "locke lamora"
+                },
+                Forum = new Forum.Models.Forum(),
+                Title = "A Thread",
+                Id = Guid.NewGuid()
+            };
+            context.Threads.Add(thread1);
+
+            context.SaveChanges();
+
+            return _instance;
+        }
+
+        public TestProvider AddTestForums(ApiContext context)
         {
             var forum1 = new Forum.Models.Forum()
             {
@@ -35,14 +56,15 @@ namespace ForumApi.Providers.test
 
             context.SaveChanges();
 
+            return _instance;
         }
-        
-        public void AddTestPosts(ApiContext context)
+
+        public TestProvider AddTestPosts(ApiContext context)
         {
             var post1 = new Post.Models.Post
             {
                 Title = "a post",
-                author = new SimpleUser()
+                Author = new SimpleUser()
                 {
                     Id = Guid.NewGuid(),
                     Name = "A User"
@@ -53,7 +75,7 @@ namespace ForumApi.Providers.test
                     Characters = 9
                 },
                 Id = Guid.NewGuid(),
-                thread = new Thread()
+                Thread = new Thread.Models.Thread()
             };
 
             context.Posts.Add(post1);
@@ -61,7 +83,7 @@ namespace ForumApi.Providers.test
             var post2 = new Post.Models.Post
             {
                 Title = "b post",
-                author = new SimpleUser()
+                Author = new SimpleUser()
                 {
                     Id = Guid.NewGuid(),
                     Name = "Yet another author"
@@ -73,13 +95,14 @@ namespace ForumApi.Providers.test
                     Text = "the quick brown fox..."
                 },
                 Id = Guid.NewGuid(),
-                thread = new Thread()
+                Thread = new Thread.Models.Thread()
             };
-            
+
             context.Posts.Add(post2);
-            
+
             context.SaveChanges();
+
+            return _instance;
         }
-        
     }
 }
